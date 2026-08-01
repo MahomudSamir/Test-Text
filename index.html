@@ -1,52 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>Texto para ZType</title>
-
-<style>
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    max-width:900px;
-    margin:40px auto;
-    line-height:1.8;
-    white-space:pre-wrap;
-    padding:20px;
-}
-
-</style>
-
-</head>
-
+<html>
 <body>
 
-Cargando texto...
-
-<script>
-
-const archivo = new URL("texto.txt", window.location.href);
-
-fetch(archivo)
-  .then(res => {
-      if (!res.ok) {
-          throw new Error("No se pudo leer texto.txt (" + res.status + ")");
-      }
-      return res.text();
-  })
-  .then(texto => {
-      document.body.innerText = texto;
-  })
-  .catch(error => {
-      document.body.innerText = error.message;
-      console.error(error);
-  });
-
-</script>
+El Becerrou Bizarrou iba paseando por el fondo del mar, Becerrou Bizarrou ataca sin titubear.
+    Un clasico reto que logro alcanzar, el Becerrou Bizarrou no descansara hasta acabar con la humanidad.
 
 </body>
-
 </html>
