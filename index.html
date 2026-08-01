@@ -1,52 +1,14 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>Texto para ZType</title>
-
-<style>
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    max-width:900px;
-    margin:40px auto;
-    line-height:1.8;
-    white-space:pre-wrap;
-    padding:20px;
-}
-
-</style>
-
-</head>
-
+<html>
 <body>
 
-Cargando texto...
+Hola mundo.
 
-<script>
+Este es mi texto.
 
-const archivo = new URL("texto.txt", window.location.href);
+Otra frase.
 
-fetch(archivo)
-  .then(res => {
-      if (!res.ok) {
-          throw new Error("No se pudo leer texto.txt (" + res.status + ")");
-      }
-      return res.text();
-  })
-  .then(texto => {
-      document.body.innerText = texto;
-  })
-  .catch(error => {
-      document.body.innerText = error.message;
-      console.error(error);
-  });
-
-</script>
+Fin del documento.
 
 </body>
-
 </html>
