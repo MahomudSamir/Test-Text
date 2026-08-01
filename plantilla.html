@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
@@ -10,21 +9,73 @@
 
 <style>
 
-body{
-    margin:0;
-    padding:0;
-    background:transparent;
-    color:transparent;
-    font-size:1px;
+html, body {
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    color: transparent;
+
+    font-size: 1px;
+
+    /* Opción 1: impedir selección de texto */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
 {{CONTENIDO}}
+
+
+<script>
+
+//
+// Opción 2: bloquear clic derecho
+//
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+});
+
+
+//
+// Opción 3: bloquear copiar, seleccionar, ver código y guardar
+//
+document.addEventListener("keydown", function(e){
+
+    if (
+        (e.ctrlKey || e.metaKey) &&
+        (
+            e.key === "c" ||  // copiar
+            e.key === "a" ||  // seleccionar todo
+            e.key === "u" ||  // ver código fuente
+            e.key === "s"     // guardar página
+        )
+    ) {
+        e.preventDefault();
+    }
+
+});
+
+
+//
+// Bloquear arrastrar texto o imágenes
+//
+document.addEventListener("dragstart", function(e){
+    e.preventDefault();
+});
+
+</script>
+
 
 </body>
 
