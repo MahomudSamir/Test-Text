@@ -1,0 +1,33 @@
+name: Generar index
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+
+  generar:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Generar index.html
+        run: |
+          contenido=$(cat texto.txt)
+
+          awk -v texto="$contenido" \
+          '{gsub(/\{\{CONTENIDO\}\}/, texto)}1' \
+          plantilla.html > index.html
+
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Actualizar index automáticamente
