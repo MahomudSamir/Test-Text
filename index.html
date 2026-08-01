@@ -28,14 +28,22 @@ Cargando texto...
 
 <script>
 
-fetch("texto.txt")
-.then(response => response.text())
-.then(texto => {
-    document.body.innerText = texto;
-})
-.catch(() => {
-    document.body.innerText = "Error cargando texto.";
-});
+const archivo = new URL("texto.txt", window.location.href);
+
+fetch(archivo)
+  .then(res => {
+      if (!res.ok) {
+          throw new Error("No se pudo leer texto.txt (" + res.status + ")");
+      }
+      return res.text();
+  })
+  .then(texto => {
+      document.body.innerText = texto;
+  })
+  .catch(error => {
+      document.body.innerText = error.message;
+      console.error(error);
+  });
 
 </script>
 
